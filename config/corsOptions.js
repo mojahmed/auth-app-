@@ -5,7 +5,7 @@ const corsOptions = {
             callback(null,true)
 
         }else {
-            callback(new Error("Not allowed by CORS"))
+            callback(new Error("You Are Not Register"))//Not allowed by CORS
         }
 
     } ,
