@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+  justify-content: center; /* Center the links */
+  gap: 20px; /* Space between links */
+  margin: 20px 0; /* Space above and below the nav */
+}
+
+.nav a {
+  text-decoration: none; /* Remove underline */
+  color: #007bff; /* Link color */
+  font-size: 18px; /* Font size */
+  padding: 10px 15px; /* Padding around the links */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+.nav a:hover {
+  background-color: #e7f0ff; /* Light background on hover */
+}
