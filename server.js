@@ -6,9 +6,10 @@ const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
 const cookieParser =require("cookie-parser");
 const cors = require("cors");
-const path = require("path")
+const path = require("path");
 
-const corsOptions = require("./config/corsOptions")
+
+const corsOptions = require("./config/corsOptions");
 const PORT = process.env.PORT || 5000;
 
 connectDB()
@@ -18,13 +19,21 @@ app.use(cors(corsOptions));
 app.use(cookieParser())
 app.use(express.json())
 
+
+
 // route
 
-app.use("/", express.static(path.join(__dirname,"public")))//server will use the static fill in this way
+app.use("/", express.static(path.join(__dirname,"public")));//server will use the static fill in this way
 
 app.use("/" , require("./routes/root"));
-app.use("/auth" , require("./routes/authRoutes"));//second route 
+app.use("/auth" , require("./routes/authRoutes")); 
 app.use("/users", require("./routes/userRoutes"));//to test the refresh-access-token
+
+app.use("/posts", require("./routes/postRoutes"));
+
+
+
+
 
 
 app.all("*" , (req, res)=>{
@@ -49,3 +58,5 @@ mongoose.connection.once("open", ()=>{
 mongoose.connection.on("error", (err) =>{
     console.log(err);
 })
+
+
