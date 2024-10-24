@@ -12,10 +12,10 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createPost(postInputs).unwrap(); // unwrap to handle the promise
+      await createPost(postInputs).unwrap(); 
       setPostInputs({ title: '', content: '' });
-      await refetch(); // Refetch the posts to get the latest data
-      navigate('/dashboard'); // Redirect after successful creation
+      await refetch(); 
+      navigate('/dashboard'); 
     } catch (err) {
       console.error('Failed to create post:', err);
     }
@@ -31,6 +31,8 @@ const CreatePost = () => {
           required
           value={postInputs.title}
           onChange={(e) => setPostInputs({ ...postInputs, title: e.target.value })}
+          data-gramm="false" 
+          spellCheck="false" 
         />
       </fieldset>
       <fieldset>
@@ -40,6 +42,8 @@ const CreatePost = () => {
           required
           value={postInputs.content}
           onChange={(e) => setPostInputs({ ...postInputs, content: e.target.value })}
+          data-gramm="false" // Disable Grammarly
+          spellCheck="true" 
         />
       </fieldset>
       <button type='submit' disabled={isLoading}>
