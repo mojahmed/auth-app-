@@ -37,12 +37,12 @@ const SignupForm = () => {
           last_name: '',
           password: '',
         });
-        navigate('Create Account'); // Redirect after successful registration
+        navigate('/create-post'); 
       }
     } catch (error) {
       console.error("Registration error:", error); // Log the error for troubleshooting
       if (error && error.data && error.data.message) {
-        alert(error.data.message); // Show an alert with the error message
+        alert(error.data.message); 
       }
     }
   };

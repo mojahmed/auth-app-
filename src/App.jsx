@@ -19,22 +19,24 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={<RootLayout />}>
-        <Route index element={<h1>Authentication App</h1>} />
-        <Route path='auth'>
+      <>
+       
+        <Route path='auth' element={<RootLayout />}>
           <Route
             path='login'
             element={
-              accessToken ? <Navigate to='/dashboard' replace /> : <Login />
+              accessToken ? <Navigate to='/create-post' replace /> : <Login />
             }
           />
           <Route
             path='signup'
             element={
-              accessToken ? <Navigate to='/dashboard' replace /> : <Signup />
+              accessToken ? <Navigate to='/create-post' replace /> : <Signup />
             }
           />
         </Route>
+
+        {/* Protected Routes */}
         <Route
           path='/dashboard'
           element={
@@ -51,7 +53,8 @@ function App() {
             </RequireAuth>
           }
         />
-      </Route>
+        <Route path='/' element={<Navigate to='/auth/login' replace />} />
+      </>
     )
   );
 

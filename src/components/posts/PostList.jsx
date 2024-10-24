@@ -33,7 +33,7 @@ const PostList = () => {
 
   const handleDelete = async (postId) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
-      await deletePost(postId).unwrap(); // Ensure proper handling of the delete operation
+      await deletePost(postId).unwrap(); 
       await refetch();
     }
   };
