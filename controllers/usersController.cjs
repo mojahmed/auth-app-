@@ -1,4 +1,4 @@
-const User = require("../models/User")
+const User = require("../models/User.cjs")
 const getAllUsers = async(req, res) =>{
     const users = await User.find().select("-password").lean();
     if(!users.length){

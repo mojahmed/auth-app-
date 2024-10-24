@@ -2,14 +2,14 @@ require("dotenv").config();
 // console.log(process.env.NODE_ENV);
 const express = require("express");
 const app = express();
-const connectDB = require("./config/dbConn");
+const connectDB = require("./config/dbConn.cjs");
 const mongoose = require("mongoose");
 const cookieParser =require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
 
 
-const corsOptions = require("./config/corsOptions");
+const corsOptions = require("./config/corsOptions.cjs");
 const PORT = process.env.PORT || 5000;
 
 connectDB()
@@ -23,13 +23,13 @@ app.use(express.json())
 
 // route
 
-app.use("/", express.static(path.join(__dirname,"public")));//server will use the static fill in this way
+app.use("/", express.static(path.join(__dirname,"public")));
 
-app.use("/" , require("./routes/root"));
-app.use("/auth" , require("./routes/authRoutes")); 
-app.use("/users", require("./routes/userRoutes"));//to test the refresh-access-token
+app.use("/" , require("./routes/root.cjs"));
+app.use("/auth" , require("./routes/authRoutes.cjs")); 
+app.use("/users", require("./routes/userRoutes.cjs"));
 
-app.use("/posts", require("./routes/postRoutes"));
+app.use("/posts", require("./routes/postRoutes.cjs"));
 
 
 

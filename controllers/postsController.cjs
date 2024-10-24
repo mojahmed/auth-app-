@@ -1,5 +1,5 @@
 // controllers/postsController.js
-const Post = require("../models/Post");
+const Post = require("../models/Post.cjs");
 
 // Create a new post
 const createPost = async (req, res) => {
@@ -12,7 +12,7 @@ const createPost = async (req, res) => {
         const post = await Post.create({
             title,
             content,
-            author: req.user, // Assuming req.user contains the logged-in user's ID
+            author: req.user, 
         });
         res.status(201).json(post);
     } catch (err) {
@@ -33,7 +33,7 @@ const getAllPosts = async (req, res) => {
 // Update a post
 const updatePostContent = async (req, res) => {
     const { id } = req.params;
-    const { content } = req.body; // Only extract content
+    const { content } = req.body; 
 
     if (!id) {
         return res.status(400).json({ message: 'Post ID is required.' });
@@ -46,7 +46,7 @@ const updatePostContent = async (req, res) => {
     try {
         const updatedPost = await Post.findByIdAndUpdate(
             id,
-            { content }, // Only update the content field
+            { content }, 
             { new: true }
         );
 
